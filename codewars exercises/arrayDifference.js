@@ -5,25 +5,8 @@
 // If a value is present in b, all of its occurrences must be removed from the other:
 // arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
-// Draft version
+// solution
 const getArrayDifference = function (arrayA, arrayB) {
-  // Use .map() on arrayA, compare every element of arrayA to elements of arrayB by using .includes()
-
-  //   const arrayDifference = arrayA.map(element => {
-  //     if (!arrayB.includes(element)) {
-  //       console.log(element);
-  //     }
-  //   });
-
-  const arrayDifference = [];
-  arrayA.forEach(element => {
-    if (!arrayB.includes(element)) arrayDifference.push(element);
-  });
-  console.log(arrayDifference);
-};
-
-// final result
-const arrayDiff = function (arrayA, arrayB) {
   const arrayDifference = [];
   arrayA.forEach(element => {
     if (!arrayB.includes(element)) arrayDifference.push(element);
