@@ -5,12 +5,18 @@
 // If a value is present in b, all of its occurrences must be removed from the other:
 // arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
+const h1 = document.querySelector('h1');
+
 // solution
 const getArrayDifference = function (arrayA, arrayB) {
   const arrayDifference = [];
   arrayA.forEach(element => {
     if (!arrayB.includes(element)) arrayDifference.push(element);
   });
+  const breakLine = document.createElement('br');
+  h1.appendChild(breakLine);
+  solutionTextNode = document.createTextNode(`${arrayDifference}`);
+  h1.appendChild(solutionTextNode);
   return arrayDifference;
 };
 
