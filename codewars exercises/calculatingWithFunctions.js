@@ -94,8 +94,71 @@ function dividedBy() {
   };
 }
 
+// Tests
 console.log(two(plus(one())));
 console.log(five(minus(three())));
 console.log(two(times(eight())));
 console.log(seven(dividedBy(nine())));
 console.log(four(dividedBy(zero())));
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// Alternative solution inspired by the codewars solutions
+
+function zeroAlt(mathOperation) {
+  return mathOperation ? mathOperation(0) : 0;
+}
+function oneAlt(mathOperation) {
+  return mathOperation ? mathOperation(1) : 1;
+}
+function twoAlt(mathOperation) {
+  return mathOperation ? mathOperation(2) : 2;
+}
+function threeAlt(mathOperation) {
+  return mathOperation ? mathOperation(3) : 3;
+}
+function fourAlt(mathOperation) {
+  return mathOperation ? mathOperation(4) : 4;
+}
+function fiveAlt(mathOperation) {
+  return mathOperation ? mathOperation(5) : 5;
+}
+function sixAlt(mathOperation) {
+  return mathOperation ? mathOperation(6) : 6;
+}
+function sevenAlt(mathOperation) {
+  return mathOperation ? mathOperation(7) : 7;
+}
+function eightAlt(mathOperation) {
+  return mathOperation ? mathOperation(8) : 8;
+}
+function nineAlt(mathOperation) {
+  return mathOperation ? mathOperation(9) : 9;
+}
+
+function plusAlt(leftOperand) {
+  return function (rightOperand) {
+    return rightOperand + leftOperand;
+  };
+}
+function minusAlt(leftOperand) {
+  return function (rightOperand) {
+    return rightOperand - leftOperand;
+  };
+}
+function timesAlt(leftOperand) {
+  return function (rightOperand) {
+    return rightOperand * leftOperand;
+  };
+}
+function dividedByAlt(leftOperand) {
+  return function (rightOperand) {
+    return Math.trunc(rightOperand / leftOperand);
+  };
+}
+
+// Tests
+console.log(oneAlt(plusAlt(twoAlt())));
+console.log(threeAlt(minusAlt(fourAlt())));
+console.log(sevenAlt(timesAlt(threeAlt())));
+console.log(nineAlt(dividedByAlt(sixAlt())));
