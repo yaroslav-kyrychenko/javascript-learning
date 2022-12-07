@@ -7,7 +7,26 @@
 // findNb(91716553919377) --> -1
 
 // Solution
-const findNumberOfCubes = function (inputNumber) {};
+const findNumberOfCubes = function (inputNumber) {
+  let n = 1;
+  let result = 0;
+
+  // INEFFICIENT SOLUTION, LEFT FOR MEMORY
+  // while (result < inputNumber) {
+  //   result = 0;
+  //   n++;
+  //   for (let m = 0; n - m >= 1; m++) {
+  //     result += (n - m) ** 3;
+  //   }
+  // }
+
+  while (result < inputNumber) {
+    result += Math.pow(n, 3);
+    n++;
+  }
+  if (result !== inputNumber) return -1;
+  return n - 1;
+};
 
 // To do: no idea how to solve, need to research
 
@@ -16,3 +35,4 @@ findNumberOfCubes(4183059834009); // should return 2022
 findNumberOfCubes(24723578342962); // should return -1
 findNumberOfCubes(135440716410000); // should return 4824
 findNumberOfCubes(40539911473216); // should return 3568
+findNumberOfCubes(100); // should return 4
