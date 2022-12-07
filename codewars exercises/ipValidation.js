@@ -18,9 +18,8 @@
 // SOLUTION
 
 const isValidIP = function (inputString) {
-  // const validIP = /(\d{1,3}\.){3}\d{1,3}/g;
   const validIP =
-    /((25[0-5]|2[0-4][0-9]|1?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|1?[0-9][0-9]?)/; // TO BE REANALYSED
+    /((25[0-5]|2[0-4][0-9]|1?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|1?[0-9][0-9]?)/;
   const inputStringArray = inputString.split('.');
   if (!validIP.test(inputString) || inputStringArray.length > 4) {
     console.log(false);
@@ -32,6 +31,7 @@ const isValidIP = function (inputString) {
       element > 255 ||
       element.includes(' ') ||
       element.includes('\n') ||
+      /[a-z]/.test(element) ||
       (element.length > 1 && element[0] === '0')
     ) {
       console.log(false);
