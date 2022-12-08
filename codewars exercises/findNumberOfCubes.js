@@ -6,29 +6,32 @@
 // findNb(1071225) --> 45
 // findNb(91716553919377) --> -1
 
-// Solution
+// Solution 1 - inefficient
+// const findNumberOfCubes = function (inputNumber) {
+//   let n = 0;
+//   let result = 0;
+
+//   INEFFICIENT SOLUTION, LEFT FOR MEMORY
+//   while (result < inputNumber) {
+//     result = 0;
+//     n++;
+//     for (let m = 0; n - m >= 1; m++) {
+//       result += (n - m) ** 3;
+//     }
+//   }
+// };
+
+// Solution 2 - optimal
 const findNumberOfCubes = function (inputNumber) {
-  let n = 1;
+  let n = 0;
   let result = 0;
 
-  // INEFFICIENT SOLUTION, LEFT FOR MEMORY
-  // while (result < inputNumber) {
-  //   result = 0;
-  //   n++;
-  //   for (let m = 0; n - m >= 1; m++) {
-  //     result += (n - m) ** 3;
-  //   }
-  // }
-
   while (result < inputNumber) {
-    result += Math.pow(n, 3);
     n++;
+    result += Math.pow(n, 3);
   }
-  if (result !== inputNumber) return -1;
-  return n - 1;
+  return result === inputNumber ? n : -1;
 };
-
-// To do: no idea how to solve, need to research
 
 // Tests
 findNumberOfCubes(4183059834009); // should return 2022
