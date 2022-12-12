@@ -15,7 +15,7 @@
 // Leading zeros (e.g. 01.02.03.04) are considered invalid
 // Inputs are guaranteed to be a single string
 
-// SOLUTION
+// SOLUTION 1
 
 const isValidIP = function (inputString) {
   const validIP =
@@ -42,21 +42,27 @@ const isValidIP = function (inputString) {
   return true;
 };
 
+// SOLUTION 2
+const isValidIP2 = function (inputString) {
+  const validIP = /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}$/;
+  return validIP.test(inputString);
+};
+
 // TESTS
-isValidIP('12.255.56.1'); // should be true
-isValidIP('137.255.156.100'); // should be true
-isValidIP(''); // should be false
-isValidIP('abc.def.ghi.jkl'); // should be false
-isValidIP('123.456.789.0'); // should be false
-isValidIP('12.34.56'); // should be false
-isValidIP('01.02.03.04'); // should be false
-isValidIP('256.1.2.3'); // should be false
-isValidIP('1.2.3.4.5'); // should be false
-isValidIP('123,45,67,89'); // should be false
-isValidIP('1e0.1e1.1e2.2e2'); // should be false
-isValidIP(' 1.2.3.4'); // should be false
-isValidIP('1.2.3.4 '); // should be false
-isValidIP('12.34.56.-7'); // should be false
-isValidIP('1.2.3.4\n'); // should be false
-isValidIP('\n1.2.3.4'); // should be false
-isValidIP('89.76.116.16ab'); // should be false
+isValidIP2('12.255.56.1'); // should be true
+isValidIP2('137.255.156.100'); // should be true
+isValidIP2(''); // should be false
+isValidIP2('abc.def.ghi.jkl'); // should be false
+isValidIP2('123.456.789.0'); // should be false
+isValidIP2('12.34.56'); // should be false
+isValidIP2('01.02.03.04'); // should be false
+isValidIP2('256.1.2.3'); // should be false
+isValidIP2('1.2.3.4.5'); // should be false
+isValidIP2('123,45,67,89'); // should be false
+isValidIP2('1e0.1e1.1e2.2e2'); // should be false
+isValidIP2(' 1.2.3.4'); // should be false
+isValidIP2('1.2.3.4 '); // should be false
+isValidIP2('12.34.56.-7'); // should be false
+isValidIP2('1.2.3.4\n'); // should be false
+isValidIP2('\n1.2.3.4'); // should be false
+isValidIP2('89.76.116.16ab'); // should be false
