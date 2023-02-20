@@ -24,12 +24,24 @@ const containsDuplicate = function (nums) {
   return nums.length !== uniqueNums.length ? true : false;
 };
 
+const containsDuplicate2 = function (nums) {
+  const n = nums.length;
+  for (let indexSlow = 0; indexSlow < n; indexSlow++) {
+    for (let indexFast = indexSlow + 1; indexFast < n; indexFast++) {
+      if (nums[indexSlow] === nums[indexFast]) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
 // TESTS
 nums1 = [1, 2, 3, 1];
 nums2 = [1, 2, 3, 4];
 nums3 = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
 nums4 = [3, 3];
-console.log(containsDuplicate(nums1));
+console.log(containsDuplicate2(nums1));
 containsDuplicate(nums2);
 // containsDuplicate(nums3);
 containsDuplicate(nums4);
