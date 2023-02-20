@@ -36,12 +36,19 @@ const containsDuplicate2 = function (nums) {
   return false;
 };
 
+containsDuplicate3 = function (nums) {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums.indexOf(nums[i]) !== i) return true;
+  }
+  return false;
+};
+
 // TESTS
 nums1 = [1, 2, 3, 1];
 nums2 = [1, 2, 3, 4];
 nums3 = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
 nums4 = [3, 3];
-console.log(containsDuplicate2(nums1));
+console.log(containsDuplicate3(nums1));
 containsDuplicate(nums2);
 // containsDuplicate(nums3);
 containsDuplicate(nums4);
