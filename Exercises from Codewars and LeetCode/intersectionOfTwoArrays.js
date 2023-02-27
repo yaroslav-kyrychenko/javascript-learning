@@ -25,36 +25,12 @@ const renderResult = function (resultContents) {
 const getIntersectionOfTwoArrays = function (numsArray1, numsArray2) {
   const intersectionArray = [];
 
-  numsArray1.sort();
-  numsArray2.sort();
-  const arrayLength1 = numsArray1.length;
-  const arrayLength2 = numsArray2.length;
-
-  let longerArray = [];
-  let shorterArray = [];
-
-  if (arrayLength1 !== arrayLength2) {
-    longerArray = arrayLength1 > arrayLength2 ? numsArray1 : numsArray2;
-    shorterArray = arrayLength1 < arrayLength2 ? numsArray1 : numsArray2;
-
-    for (let indexSlow = 0; indexSlow < shorterArray.length; indexSlow++) {
-      for (let indexFast = 0; indexFast < longerArray.length; indexFast++) {
-        if (shorterArray[indexSlow] === longerArray[indexFast]) {
-          intersectionArray.push(shorterArray[indexSlow]);
-          break;
-        }
-      }
+  for (let i = 0; i < numsArray1.length; i++) {
+    if (numsArray2.includes(numsArray1[i])) {
+      intersectionArray.push(numsArray1[i]);
+      numsArray2.splice(numsArray2.indexOf(numsArray1[i]), 1);
     }
   }
-
-  if (arrayLength1 === arrayLength2) {
-    for (let index = 0; index < arrayLength1; index++) {
-      if (numsArray1[index] === numsArray2[index]) {
-        intersectionArray.push(numsArray1[index]);
-      }
-    }
-  }
-  // console.log(`Longer array - ${longerArray}, shorter array - ${shorterArray}`);
 
   renderResult(intersectionArray);
   return intersectionArray;
@@ -67,7 +43,10 @@ const nums3 = [4, 9, 5];
 const nums4 = [9, 4, 9, 8, 4];
 const nums5 = [1, 2];
 const nums6 = [1, 1];
+const nums7 = [1, 2, 2, 1];
+const nums8 = [2];
 
 getIntersectionOfTwoArrays(nums1, nums2);
 getIntersectionOfTwoArrays(nums3, nums4);
-getIntersectionOfTwoArrays(nums6, nums5);
+getIntersectionOfTwoArrays(nums5, nums6);
+getIntersectionOfTwoArrays(nums7, nums8);
