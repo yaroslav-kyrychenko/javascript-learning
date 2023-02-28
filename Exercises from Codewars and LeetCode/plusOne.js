@@ -35,31 +35,31 @@ const renderResult = function (resultContents) {
 };
 
 // SOLUTION
-
-const addOneToLargeInteger = function (digitsArray) {
-  const maxLength = String(Number.MAX_SAFE_INTEGER).length;
-  let wholeInteger;
-
-  if (digitsArray.length <= maxLength) {
-    wholeInteger = +digitsArray.join('');
+const addOneToInteger = function (digitsArray) {
+  const n = digitsArray.length;
+  for (let i = 1; i <= n; i++) {
+    digitsArray[n - i] += 1;
+    if (digitsArray[n - i] < 10) break;
+    if (digitsArray[n - i] === 10) {
+      digitsArray[n - i] = 0;
+    }
+    if (i === n) {
+      digitsArray.splice(0, 0, 1);
+    }
   }
-
-  if (digitsArray.length > maxLength) {
-    let secondDigitsArray = [...digitsArray.splice(maxLength - 1)];
-    wholeInteger = +secondDigitsArray.join('');
-  }
-  wholeInteger++;
-  digitsArray = String(wholeInteger).split('');
-  renderResult(digitsArray);
+  console.log(digitsArray);
   return digitsArray;
 };
+
 // TESTS
 digitsArray1 = [1, 2, 3];
-digitsArray2 = [4, 3, 2, 1];
+digitsArray2 = [4, 3, 2, 9];
 digitsArray3 = [9];
 digitsArray4 = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3];
+digitsArray5 = [9, 9, 9, 9];
 
-// addOneToLargeInteger(digitsArray1);
-// addOneToLargeInteger(digitsArray2);
-// addOneToLargeInteger(digitsArray3);
-addOneToLargeInteger(digitsArray4);
+addOneToInteger(digitsArray1);
+addOneToInteger(digitsArray2);
+addOneToInteger(digitsArray3);
+addOneToInteger(digitsArray4);
+addOneToInteger(digitsArray5);
