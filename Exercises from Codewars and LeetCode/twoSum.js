@@ -50,6 +50,7 @@ const getIndicesOfElementsThatSumToTarget = function (inputArray, targetSum) {
       const sum = inputArray[indexSlow] + inputArray[indexFast];
       if (sum === targetSum) {
         indicesOfAddends.push(indexSlow, indexFast);
+        renderResult(indicesOfAddends);
         return indicesOfAddends;
       }
     }
