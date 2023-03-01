@@ -24,11 +24,6 @@ const renderResult = function (resultContents) {
 
 // SOLUTION
 const moveZeroesToEndOfArray = function (inputArray) {
-  // create an empty array
-  // iterate
-  // read if equals to zero
-  // if it does remove from the current position and push into the new array
-  // when done iterating, concat the zeros array with the input array
   renderResult(`initial: ${inputArray}`);
   const zeroesArray = [];
   for (let i = 0; i < inputArray.length; i++) {
@@ -38,12 +33,12 @@ const moveZeroesToEndOfArray = function (inputArray) {
       i--;
     }
   }
-  for (const element of zeroesArray) {
-    inputArray.push(element);
-  }
+  inputArray.push(...zeroesArray);
+
   renderResult(`output: ${inputArray}`);
   return inputArray;
 };
+
 // TESTS
 const inputArray1 = [0, 1, 0, 3, 12];
 const inputArray2 = [0];
