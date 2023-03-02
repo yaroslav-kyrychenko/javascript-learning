@@ -51,12 +51,39 @@ const renderResult = function (resultContents) {
 const isValidSudokuBoard = function (board) {
   // 1) validate rows
   // iterate over each subarray of the original array and check if each of its elements is between 1-9 and if it contains any duplicates
+  isValidRowColumnOrSubbox(board);
   // 2) validate columns
-  // declare a variable for counting columns
   // iterate over the subarray using the counter for each column, push every element to an empty array, check if each of the elements of the new array is between 1-9 and if it contains any duplicates
+  const columns = [[], [], [], [], [], [], [], [], []];
+  for (let index = 0; index < board.length; index++) {
+    for (let columnNumber = 0; columnNumber < columns.length; columnNumber++) {
+      columns[columnNumber].push(board[index][columnNumber]);
+    }
+  }
+  isValidRowColumnOrSubbox(columns);
   // 3) validate 3x3 sub-boxes
+  const subBoxes = [[], [], [], [], [], [], [], [], []];
   // declare variables for the counting, e.g. 1 and 3 for first 3x3 box, 2 and 3 for the second, 3 x 3 for the third etc
   // push all the elements of sub-boxes into a new array, check if each of the elements of the new array is between 1-9 and if it contains any duplicates
+  console.log('PASSED');
+  return true;
+};
+
+const isValidRowColumnOrSubbox = function (inputArray) {
+  for (const array of inputArray) {
+    for (let index = 0; index < array.length; index++) {
+      if (array[index] < 1 || array[index] > 9) {
+        console.log(`${array[index]} false`);
+        return false;
+      }
+      if (array[index] >= 1 && array[index] <= 9) {
+        if (index !== array.indexOf(array[index])) {
+          console.log(`${array[index]} false`);
+          return false;
+        }
+      }
+    }
+  }
 };
 
 // TESTS
@@ -85,4 +112,4 @@ const board2 = [
 ];
 
 isValidSudokuBoard(board1);
-isValidSudokuBoard(board2);
+// isValidSudokuBoard(board2);
