@@ -23,11 +23,23 @@ const renderResult = function (resultContent) {
 
 // SOLUTION
 const getRotatedMatrix = function (matrix) {
-  for (let xCoord = 0; xCoord < matrix[0].length; xCoord++) {
-    for (let yCoord = 2; yCoord > xCoord; yCoord--) {
-      console.log(matrix[xCoord][yCoord]);
+  for (let x = 0; x < matrix.length; x++) {
+    for (let y = x; y < matrix[x].length; y++) {
+      const temp = matrix[x][y];
+      matrix[x][y] = matrix[y][x];
+      matrix[y][x] = temp;
     }
   }
+  for (let x = 0; x < matrix.length; x++) {
+    for (let y = 0; y < matrix[x].length / 2; y++) {
+      const temp = matrix[x][y];
+      const indexOfSwappedElement = matrix[x].length - 1 - y;
+      matrix[x][y] = matrix[x][indexOfSwappedElement];
+      matrix[x][indexOfSwappedElement] = temp;
+    }
+  }
+  renderResult(matrix);
+  return matrix;
 };
 
 // TESTS
@@ -43,3 +55,6 @@ const matrix2 = [
   [13, 3, 6, 7],
   [15, 14, 12, 16],
 ];
+
+getRotatedMatrix(matrix1);
+getRotatedMatrix(matrix2);
